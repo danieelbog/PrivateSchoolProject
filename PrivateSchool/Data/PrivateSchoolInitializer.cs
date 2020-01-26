@@ -71,6 +71,54 @@ namespace PrivateSchool.Data
             assignments.ForEach(a => context.Assignments.Add(a));
             context.SaveChanges();
 
+            var studentPerCourse = new List<StudentPerCourse>
+            {
+                new StudentPerCourse{StudentID = 1, CourseID=1},
+                new StudentPerCourse{StudentID = 1, CourseID=2},
+                new StudentPerCourse{StudentID = 1, CourseID=3},
+                new StudentPerCourse{StudentID = 2, CourseID=1},
+                new StudentPerCourse{StudentID = 3, CourseID=2},
+                new StudentPerCourse{StudentID = 4, CourseID=2},
+                new StudentPerCourse{StudentID = 5, CourseID=2},
+                new StudentPerCourse{StudentID = 6, CourseID=1},
+                new StudentPerCourse{StudentID = 7, CourseID=3},
+                new StudentPerCourse{StudentID = 8, CourseID=3},
+                new StudentPerCourse{StudentID = 9, CourseID=3},
+            };
+
+            studentPerCourse.ForEach(spc => context.StudentPerCourses.Add(spc));
+            context.SaveChanges();
+
+            var trainerPerCourse = new List<TrainerPerCourse>
+            {
+                new TrainerPerCourse{TrainerID=1, CourseID=1 },
+                new TrainerPerCourse{TrainerID=2, CourseID=2 },
+                new TrainerPerCourse{TrainerID=3, CourseID=3 },
+
+            };
+
+            trainerPerCourse.ForEach(tpc => context.TrainerPerCourses.Add(tpc));
+            context.SaveChanges();
+
+            var assignmentPerStudent = new List<AssignmentPerStudent>
+            {
+                new AssignmentPerStudent{StudentID=1, AssignmentID=1, OralMark=OralMark.A, TotalMark=TotalMark.A},
+                new AssignmentPerStudent{StudentID=2, AssignmentID=2, OralMark=OralMark.A, TotalMark=TotalMark.A},
+                new AssignmentPerStudent{StudentID=3, AssignmentID=3, OralMark=OralMark.A, TotalMark=TotalMark.A},
+                new AssignmentPerStudent{StudentID=4, AssignmentID=1, OralMark=OralMark.A, TotalMark=TotalMark.A},
+                new AssignmentPerStudent{StudentID=5, AssignmentID=2, OralMark=OralMark.A, TotalMark=TotalMark.A},
+                new AssignmentPerStudent{StudentID=6, AssignmentID=3, OralMark=OralMark.A, TotalMark=TotalMark.A},
+                new AssignmentPerStudent{StudentID=7, AssignmentID=1, OralMark=OralMark.A, TotalMark=TotalMark.A},
+                new AssignmentPerStudent{StudentID=8, AssignmentID=2, OralMark=OralMark.A, TotalMark=TotalMark.A},
+                new AssignmentPerStudent{StudentID=9, AssignmentID=3, OralMark=OralMark.A, TotalMark=TotalMark.A},
+                new AssignmentPerStudent{StudentID=1, AssignmentID=2, OralMark=OralMark.A, TotalMark=TotalMark.A},
+                new AssignmentPerStudent{StudentID=1, AssignmentID=3, OralMark=OralMark.B, TotalMark=TotalMark.B},
+
+            };
+
+            assignmentPerStudent.ForEach(aps => context.AssignmentPerStudents.Add(aps));
+            context.SaveChanges();
+
         }
         
     }

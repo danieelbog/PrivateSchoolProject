@@ -16,10 +16,27 @@ namespace PrivateSchool.Controllers
         private PrivateSchoolContext db = new PrivateSchoolContext();
 
         // GET: StudentPerCourses
-        public ActionResult Index()
+        public ActionResult Index(string courseName)
         {
-            var studentPerCourses = db.StudentPerCourses.Include(s => s.Course).Include(s => s.Student);
-            return View(studentPerCourses.ToList());
+
+            var coursesList = new List<string>();
+
+            var coursesQuery = from c in db.StudentPerCourses
+                               orderby c.Course.Title
+                               select c.Course.Title;
+
+            coursesList.AddRange(coursesQuery.Distinct());
+            ViewBag.courseName = new SelectList(coursesList);
+
+            var studentsPerCourses = from spc in db.StudentPerCourses
+                                     select spc;
+
+            if (!String.IsNullOrEmpty(courseName))
+            {
+                studentsPerCourses = studentsPerCourses.Where(spc => spc.Course.Title == courseName);
+            }
+
+            return View(studentsPerCourses);
         }
 
         // GET: StudentPerCourses/Details/5

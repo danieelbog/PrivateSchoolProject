@@ -7,7 +7,7 @@ using System.Web;
 
 namespace PrivateSchool.Data
 {
-    public class PrivateSchoolInitializer : DropCreateDatabaseIfModelChanges<PrivateSchoolContext>
+    public class PrivateSchoolInitializer : DropCreateDatabaseAlways<PrivateSchoolContext>
     {
         protected override void Seed(PrivateSchoolContext context)
         {           

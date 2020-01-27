@@ -127,13 +127,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AssignmentPerStudentsController.cs" />
     <Compile Include="Controllers\AssignmentsController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\StudentPerCoursesController.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
-    <Compile Include="Controllers\TrainerPerCoursesController.cs" />
     <Compile Include="Controllers\TrainersController.cs" />
     <Compile Include="Data\PrivateSchoolContext.cs" />
     <Compile Include="Data\PrivateSchoolInitializer.cs" />
@@ -207,21 +204,6 @@
     <Content Include="Views\Assignments\Details.cshtml" />
     <Content Include="Views\Assignments\Edit.cshtml" />
     <Content Include="Views\Assignments\Index.cshtml" />
-    <Content Include="Views\AssignmentPerStudents\Create.cshtml" />
-    <Content Include="Views\AssignmentPerStudents\Delete.cshtml" />
-    <Content Include="Views\AssignmentPerStudents\Details.cshtml" />
-    <Content Include="Views\AssignmentPerStudents\Edit.cshtml" />
-    <Content Include="Views\AssignmentPerStudents\Index.cshtml" />
-    <Content Include="Views\StudentPerCourses\Create.cshtml" />
-    <Content Include="Views\StudentPerCourses\Delete.cshtml" />
-    <Content Include="Views\StudentPerCourses\Details.cshtml" />
-    <Content Include="Views\StudentPerCourses\Edit.cshtml" />
-    <Content Include="Views\StudentPerCourses\Index.cshtml" />
-    <Content Include="Views\TrainerPerCourses\Create.cshtml" />
-    <Content Include="Views\TrainerPerCourses\Delete.cshtml" />
-    <Content Include="Views\TrainerPerCourses\Details.cshtml" />
-    <Content Include="Views\TrainerPerCourses\Edit.cshtml" />
-    <Content Include="Views\TrainerPerCourses\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

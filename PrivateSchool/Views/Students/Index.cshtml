@@ -26,26 +26,60 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateOfBirth)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Fees)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr id="studentDetails">
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fees)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+
+        foreach (var studentPerCourse in item.StudentPerCourse)
+        {
+            <tr id="studentPerCourseName" class="studentPerCourseName">
+                <th>
+                    Course Title
+                </th>
+                <th>
+                    Course Stream
+                </th>
+                <th>
+                    Course Type
+                </th>
+                <th>
+                    Ending Date
+                </th>
+            </tr>
+
+            <tr id="studentPerCourseDetails" class="studentPerCourseName">
+                <td>
+                    @Html.DisplayFor(modelItem => studentPerCourse.Course.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => studentPerCourse.Course.Stream)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => studentPerCourse.Course.Type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => studentPerCourse.Course.EndingDate)
+                </td>
+            </tr>
+        }     
+    }
 
 </table>

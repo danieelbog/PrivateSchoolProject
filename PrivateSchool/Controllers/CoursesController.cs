@@ -77,17 +77,24 @@ namespace PrivateSchool.Controllers
         // POST: Courses/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [HttpPost, ActionName("Edit")]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Title,Stream,Type,StartingDate,EndingDate")] Course course)
+        public ActionResult EditPost(int? id)
         {
-            if (ModelState.IsValid)
+            if (id == null)
             {
-                db.Entry(course).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            return View(course);
+            Course courseToUpdate = db.Courses.Find(id);
+
+            if(TryUpdateModel(courseToUpdate, "", 
+                new string[] { "Title", "Stream", "Type", "StartingDate", "EndingDate" }))
+            {
+                db.SaveChanges();
+                RedirectToAction("Index");
+            }
+
+            return View(courseToUpdate);
         }
 
         // GET: Courses/Delete/5

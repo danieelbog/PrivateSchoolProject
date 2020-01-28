@@ -100,7 +100,7 @@ namespace PrivateSchool.Controllers
                 }
             }
             
-            return View();
+            return View(studentToUpdate);
         }
 
         // GET: Students/Delete/5

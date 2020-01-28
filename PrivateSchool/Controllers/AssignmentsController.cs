@@ -77,17 +77,23 @@ namespace PrivateSchool.Controllers
         // POST: Assignments/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [HttpPost, ActionName("Edit")]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Title,Descreption,Deadline")] Assignment assignment)
+        public ActionResult EditPost(int? id)
         {
-            if (ModelState.IsValid)
+            if (id == null)
             {
-                db.Entry(assignment).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            return View(assignment);
+            Assignment assignmentToUpdate = db.Assignments.Find(id);
+            if (TryUpdateModel(assignmentToUpdate, "",
+                new string[] { "Title", "Descreption", "Deadline" }))
+            {
+                db.SaveChanges();
+                RedirectToAction("Index");
+            }
+
+            return View(assignmentToUpdate);
         }
 
         // GET: Assignments/Delete/5

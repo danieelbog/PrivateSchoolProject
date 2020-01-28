@@ -22,3 +22,11 @@ select,
 textarea {
     max-width: 280px;
 }
+
+#studentPerCourseName {
+    display: none;
+}
+
+#studentPerCourseDetails {
+    display: none;
+}

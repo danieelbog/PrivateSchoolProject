@@ -16,9 +16,51 @@ namespace PrivateSchool.Controllers
         private PrivateSchoolContext db = new PrivateSchoolContext();
 
         // GET: Students
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string searchString)
         {
-            return View(db.Students.ToList());
+            ViewBag.LNameSortParam = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.FNameSortParam = sortOrder == "FirstName" ? "firstName_Desc" : "FirstName";
+            ViewBag.DateSortParam = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewBag.FeesSortParam = sortOrder == "Fees" ? "fees_desc" : "Fees";
+
+            var students = from s in db.Students
+                           select s;
+
+            if(!String.IsNullOrEmpty(searchString))
+            {
+                students = students.Where(s => s.LastName.Contains(searchString)
+                    || s.FirstName.Contains(searchString));
+            }
+
+            switch(sortOrder)
+            {
+                case "name_desc":
+                    students = students.OrderByDescending(s => s.LastName);
+                    break;
+                case "FirstName":
+                    students = students.OrderBy(s => s.FirstName);
+                    break;
+                case "firstName_Desc":
+                    students = students.OrderByDescending(s => s.FirstName);
+                    break;
+                case "Date":
+                    students = students.OrderBy(s => s.DateOfBirth);
+                    break;
+                case "date_desc":
+                    students = students.OrderByDescending(s => s.DateOfBirth);
+                    break;
+                case "Fees":
+                    students = students.OrderBy(s => s.Fees);
+                    break;
+                case "fees_desc":
+                    students = students.OrderByDescending(s => s.Fees);
+                    break;
+                default:
+                    students = students.OrderBy(s => s.LastName);
+                    break;
+            }
+
+            return View(students.ToList());
         }
 
         // GET: Students/Details/5

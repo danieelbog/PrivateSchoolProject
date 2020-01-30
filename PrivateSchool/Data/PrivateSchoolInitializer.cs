@@ -35,15 +35,15 @@ namespace PrivateSchool.Data
 
             var students = new List<Student>
             {
+                new Student{FirstName = firstNames[random.Next(0, firstNames.Length)], LastName = lastNames[random.Next(0, lastNames.Length)], DateOfBirth=DateTime.Parse("1990-09-01"), Fees = random.Next(1000,2000)},
+                new Student{FirstName = firstNames[random.Next(0, firstNames.Length)], LastName = lastNames[random.Next(0, lastNames.Length)], DateOfBirth=DateTime.Parse("1991-09-01"), Fees = random.Next(1000,2000)},
+                new Student{FirstName = firstNames[random.Next(0, firstNames.Length)], LastName = lastNames[random.Next(0, lastNames.Length)], DateOfBirth=DateTime.Parse("1992-09-01"), Fees = random.Next(1000,2000)},
+                new Student{FirstName = firstNames[random.Next(0, firstNames.Length)], LastName = lastNames[random.Next(0, lastNames.Length)], DateOfBirth=DateTime.Parse("1993-09-01"), Fees = random.Next(1000,2000)},
+                new Student{FirstName = firstNames[random.Next(0, firstNames.Length)], LastName = lastNames[random.Next(0, lastNames.Length)], DateOfBirth=DateTime.Parse("1993-09-01"), Fees = random.Next(1000,2000)},
+                new Student{FirstName = firstNames[random.Next(0, firstNames.Length)], LastName = lastNames[random.Next(0, lastNames.Length)], DateOfBirth=DateTime.Parse("1994-09-01"), Fees = random.Next(1000,2000)},
+                new Student{FirstName = firstNames[random.Next(0, firstNames.Length)], LastName = lastNames[random.Next(0, lastNames.Length)], DateOfBirth=DateTime.Parse("1994-09-01"), Fees = random.Next(1000,2000)},
                 new Student{FirstName = firstNames[random.Next(0, firstNames.Length)], LastName = lastNames[random.Next(0, lastNames.Length)], DateOfBirth=DateTime.Parse("1995-09-01"), Fees = random.Next(1000,2000)},
-                new Student{FirstName = firstNames[random.Next(0, firstNames.Length)], LastName = lastNames[random.Next(0, lastNames.Length)], DateOfBirth=DateTime.Parse("1995-09-01"), Fees = random.Next(1000,2000)},
-                new Student{FirstName = firstNames[random.Next(0, firstNames.Length)], LastName = lastNames[random.Next(0, lastNames.Length)], DateOfBirth=DateTime.Parse("1995-09-01"), Fees = random.Next(1000,2000)},
-                new Student{FirstName = firstNames[random.Next(0, firstNames.Length)], LastName = lastNames[random.Next(0, lastNames.Length)], DateOfBirth=DateTime.Parse("1995-09-01"), Fees = random.Next(1000,2000)},
-                new Student{FirstName = firstNames[random.Next(0, firstNames.Length)], LastName = lastNames[random.Next(0, lastNames.Length)], DateOfBirth=DateTime.Parse("1995-09-01"), Fees = random.Next(1000,2000)},
-                new Student{FirstName = firstNames[random.Next(0, firstNames.Length)], LastName = lastNames[random.Next(0, lastNames.Length)], DateOfBirth=DateTime.Parse("1995-09-01"), Fees = random.Next(1000,2000)},
-                new Student{FirstName = firstNames[random.Next(0, firstNames.Length)], LastName = lastNames[random.Next(0, lastNames.Length)], DateOfBirth=DateTime.Parse("1995-09-01"), Fees = random.Next(1000,2000)},
-                new Student{FirstName = firstNames[random.Next(0, firstNames.Length)], LastName = lastNames[random.Next(0, lastNames.Length)], DateOfBirth=DateTime.Parse("1995-09-01"), Fees = random.Next(1000,2000)},
-                new Student{FirstName = firstNames[random.Next(0, firstNames.Length)], LastName = lastNames[random.Next(0, lastNames.Length)], DateOfBirth=DateTime.Parse("1995-09-01"), Fees = random.Next(1000,2000)},
+                new Student{FirstName = firstNames[random.Next(0, firstNames.Length)], LastName = lastNames[random.Next(0, lastNames.Length)], DateOfBirth=DateTime.Parse("1990-09-01"), Fees = random.Next(1000,2000)},
 
             };
 

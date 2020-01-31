@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using PrivateSchool.Data;
 using PrivateSchool.Models;
+using PagedList;
 
 namespace PrivateSchool.Controllers
 {
@@ -16,12 +17,23 @@ namespace PrivateSchool.Controllers
         private PrivateSchoolContext db = new PrivateSchoolContext();
 
         // GET: Students
-        public ActionResult Index(string sortOrder, string searchString)
+        public ActionResult Index(string sortOrder, string searchString, string currentFilter, int? page )
         {
+            ViewBag.CurrentSort = sortOrder;
             ViewBag.LNameSortParam = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.FNameSortParam = sortOrder == "FirstName" ? "firstName_Desc" : "FirstName";
             ViewBag.DateSortParam = sortOrder == "Date" ? "date_desc" : "Date";
             ViewBag.FeesSortParam = sortOrder == "Fees" ? "fees_desc" : "Fees";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
 
             var students = from s in db.Students
                            select s;
@@ -60,7 +72,10 @@ namespace PrivateSchool.Controllers
                     break;
             }
 
-            return View(students.ToList());
+            int pageSize = 3;
+            int pageNumber = (page ?? 3);
+            return View(students.ToPagedList(pageNumber, pageSize));
+
         }
 
         // GET: Students/Details/5

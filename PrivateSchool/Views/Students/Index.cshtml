@@ -1,4 +1,5 @@
-﻿@model IEnumerable<PrivateSchool.Models.Student>
+﻿@model PagedList.IPagedList<PrivateSchool.Models.Student>
+@using PagedList.Mvc;
 
 @{
     ViewBag.Title = "Index";
@@ -10,11 +11,12 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Index", "Student", FormMethod.Get))
 {
-    <p>Enter a name to search...
-        @Html.TextBox("SearchString")
-        <input type="submit" value="Search"/>
+    <p>
+        Search
+        @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Search" />
     </p>
 }
 
@@ -22,16 +24,16 @@
 <table class="table">
     <tr>
         <th>
-            @Html.ActionLink("First Name", "Index", new { sortOrder = ViewBag.FNameSortParam})
+            @Html.ActionLink("First Name", "Index", new { sortOrder = ViewBag.FNameSortParam, currentFilter=ViewBag.CurrentFilter})
         </th>
         <th>
-            @Html.ActionLink("Last Name", "Index", new { sortOrder = ViewBag.LNameSortParam })
+            @Html.ActionLink("Last Name", "Index", new { sortOrder = ViewBag.LNameSortParam, currentFilter=ViewBag.CurrentFilter})
         </th>
         <th>
-            @Html.ActionLink("Date of Birth", "Index", new { sortOrder = ViewBag.DateSortParam })
+            @Html.ActionLink("Date of Birth", "Index", new { sortOrder = ViewBag.DateSortParam, currentFilter=ViewBag.CurrentFilter})
         </th>
         <th>
-            @Html.ActionLink("Fees", "Index", new { sortOrder = ViewBag.FeesSortParam })
+            @Html.ActionLink("Fees", "Index", new { sortOrder = ViewBag.FeesSortParam, currentFilter=ViewBag.CurrentFilter})
         </th>
         <th></th>
     </tr>
@@ -89,7 +91,13 @@
                     @Html.DisplayFor(modelItem => studentPerCourse.Course.EndingDate)
                 </td>
             </tr>
-        }     
+        }
     }
 
 </table>
+
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
